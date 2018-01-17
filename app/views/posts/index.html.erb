@@ -1,0 +1,94 @@
+
+<div class="container">
+  <div class="container-fluid">
+            <div class="row"
+            <div class="col-md-12 text-center">
+        <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><%= t "KARTAL İLETİŞİM" %></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#"><%= t "ANASAYFA" %></a></li>
+      <li><a href="#"><%= t "İÇİNDEKİLER" %></a></li>
+      <li><a href="#"><%= t "İLETİŞİM" %> </a></li> 
+      <li><a href="?locale=tr">TR</a></li>
+      <li><a href="?locale=en">EN</a></li>
+       <li><a class="animate" 	<%= link_to t('Cıkıs'), destroy_user_session_path, :method => :delete %></a></li>
+  
+    </ul>
+  </div>
+</nav>
+</div> 
+<div class="row">
+<div class="col-md-3">
+    <ul class="nav nav-pills nav-stacked visible-md visible-lg">
+        
+ <li role="presentation" class="active"><a href="#"><%= t "MOBİL" %></a></li>
+  <li role="presentation"><a href="#"><%= t "TV&AV" %></a></li>
+  <li role="presentation"><a href="#"><%= t "BEYAZ EŞYA" %></a></li>
+   <li role="presentation"><a href="#"><%= t "KAMPANYALAR" %></a></li>
+  <li role="presentation"><a href="#"><%= t"DESTEK" %></a></li>
+  <li role="presentation"><a href="#"><%= t "KURUMSAL ÇÖZÜMLER" %></a></li>
+</ul>
+</div>
+
+<div class="col-md-6">
+  <p id="notice"><%= notice %></p>
+  
+  <h1><%= t "Büyük işler yap" %></h1>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t "kullanıcı" %></th>
+        <th><%= t"mesaj" %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.msg %></td>
+          <td><%= image_tag post.image.url(:thumb) %></td>
+          <br/>
+          <td><%= link_to t('Göster'),  post, class:'btn btn-primary' %></td>
+          <td><%= link_to t('Düzenle'), edit_post_path(post) , class:'btn btn-warning'%></td>
+          <td><%= link_to t('Silme'), post, method: :delete, data: { confirm: 'Silmek istediiginize emin misiniz?' } , class:'btn btn-danger' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <br>
+  
+  <%= link_to 'New Post', new_post_path, class:'btn btn-success' %>
+
+  </div>
+  
+  <div class="col-md-3 visible-md visible-lg">
+    <div >
+  <img src="http://pngimg.com/uploads/samsung_logo/samsung_logo_PNG5.png" >
+</div><br>
+ <div >
+  <img src="https://cdn3.iconfinder.com/data/icons/picons-social/57/56-apple-256.png" >
+</div>
+</div>
+
+<div class="row">
+  
+  <footer class="col-md-12 text-center row"  >
+    <% request.env.each do |key, value| %>
+ <strong><%= key %></strong> => <%= value %><br/>
+   <% end %>
+    
+       © Tüm hakları 14555534 Merve KARTAL'a aittir.
+       
+</footer>
+  
+  
+  
+  </div>
+</div>
